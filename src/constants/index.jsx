@@ -1,7 +1,7 @@
 import { ChartColumn, Home, NotepadText, Package, PackagePlus, Settings, ShoppingBag, UserCheck, UserPlus, Users } from "lucide-react";
 
 import ProfileImage from "@/assets/profile-image.jpg";
-import ProductImage from "@/assets/product-image.jpg";
+import ProductImage from "@/assets/producto.jpg";
 
 export const navbarLinks = [
     {
@@ -78,7 +78,7 @@ export const navbarLinks = [
 
 export const overviewData = [
     {
-        name: "Jan",
+        name: "Ene",
         total: 1500,
     },
     {
@@ -90,7 +90,7 @@ export const overviewData = [
         total: 1000,
     },
     {
-        name: "Apr",
+        name: "Abr",
         total: 5000,
     },
     {
@@ -106,7 +106,7 @@ export const overviewData = [
         total: 2000,
     },
     {
-        name: "Aug",
+        name: "Ago",
         total: 5500,
     },
     {
@@ -122,7 +122,7 @@ export const overviewData = [
         total: 1500,
     },
     {
-        name: "Dec",
+        name: "Dic",
         total: 2500,
     },
 ];
@@ -182,92 +182,92 @@ export const recentSalesData = [
 export const topProducts = [
     {
         number: 1,
-        name: "Wireless Headphones",
+        name: "COLNAGO V3Rs",
         image: ProductImage,
-        description: "High-quality noise-canceling wireless headphones.",
-        price: 99.99,
-        status: "In Stock",
+        description: "Bicicleta tope de gama para ciclismo de carretera.",
+        price: 7599.00,
+        status: "Últimas unidades",
         rating: 4.5,
     },
     {
         number: 2,
-        name: "Smartphone",
+        name: "Colnago C64",
         image: ProductImage,
-        description: "Latest 5G smartphone with excellent camera features.",
-        price: 799.99,
-        status: "In Stock",
+        description: "BICICLETA DE CARRETERA DE ALTO RENDIMIENTO HECHA A MANO.",
+        price: 7989.99,
+        status: "En stock",
         rating: 4.7,
     },
     {
         number: 3,
-        name: "Gaming Laptop",
+        name: "COLNAGO YR3",
         image: ProductImage,
-        description: "Powerful gaming laptop with high-end graphics.",
-        price: 1299.99,
-        status: "In Stock",
+        description: "Bicicleta de ruta escaladora",
+        price: 8299.99,
+        status: "En Stock",
         rating: 4.8,
     },
     {
         number: 4,
-        name: "Smartwatch",
+        name: "COLNAGO YTE",
         image: ProductImage,
-        description: "Stylish smartwatch with fitness tracking features.",
+        description: "La bicicleta chrono tope de gama",
         price: 199.99,
-        status: "Out of Stock",
+        status: "No disponible",
         rating: 4.4,
     },
     {
         number: 5,
-        name: "Bluetooth Speaker",
+        name: "CANNYON AEROAD CF SLX",
         image: ProductImage,
-        description: "Portable Bluetooth speaker with deep bass sound.",
-        price: 59.99,
-        status: "In Stock",
+        description: "Bicicleta de carretera aerodinámica de alto rendimiento.",
+        price: 5999.99,
+        status: "No disponible",
         rating: 4.3,
     },
     {
         number: 6,
-        name: "4K Monitor",
+        name: "CANNYON ULTIMATE CF SL",
         image: ProductImage,
-        description: "Ultra HD 4K monitor with stunning color accuracy.",
-        price: 399.99,
-        status: "In Stock",
+        description: "Bicicleta de carretera ligera y versátil para escaladas.",
+        price: 6999.99,
+        status: "En stock",
         rating: 4.6,
     },
     {
         number: 7,
-        name: "Mechanical Keyboard",
+        name: "CANNYON GRIZL CF SL",
         image: ProductImage,
-        description: "Mechanical keyboard with customizable RGB lighting.",
-        price: 89.99,
-        status: "In Stock",
+        description: "LA bicicleta gravel de aventura con gran capacidad de carga.",
+        price: 5599.99,
+        status: "En stock",
         rating: 4.7,
     },
     {
         number: 8,
-        name: "Wireless Mouse",
+        name: "S-WORKS ROLLER|",
         image: ProductImage,
-        description: "Ergonomic wireless mouse with precision tracking.",
-        price: 49.99,
-        status: "In Stock",
+        description: "Bicicleta chrono de alto rendimiento para contrarreloj y triatlón.",
+        price: 7999.99,
+        status: "En Stock",
         rating: 4.5,
     },
     {
         number: 9,
-        name: "Action Camera",
+        name: "S-WORKS ACTION",
         image: ProductImage,
-        description: "Waterproof action camera with 4K video recording.",
-        price: 249.99,
-        status: "In Stock",
+        description: "La bicicleta de ruta definitiva para ciclistas que buscan velocidad.",
+        price: 8499.99,
+        status: "Últimas unidades",
         rating: 4.8,
     },
     {
         number: 10,
-        name: "External Hard Drive",
+        name: "S-WORKS TARMAC SL7",
         image: ProductImage,
-        description: "Portable 2TB external hard drive for data storage.",
-        price: 79.99,
-        status: "Out of Stock",
+        description: "La gravel de alto rendimiento para aventuras todoterreno.",
+        price: 7555.99,
+        status: "Sin stock",
         rating: 4.5,
     },
 ];
