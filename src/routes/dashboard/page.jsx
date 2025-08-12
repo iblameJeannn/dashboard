@@ -1,8 +1,7 @@
 import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 import { useTheme } from "@/hooks/use-theme";
-
-import { overviewData, recentSalesData, topProducts } from "@/constants";
+import { useDashboardData } from "@/hooks/use-api";
 
 import { Footer } from "@/layouts/footer";
 
@@ -10,6 +9,31 @@ import { CreditCard, DollarSign, Package, PencilLine, Star, Trash, TrendingUp, U
 
 const DashboardPage = () => {
     const { theme } = useTheme();
+    const { dashboardData, loading, error } = useDashboardData();
+
+    if (loading) {
+        return (
+            <div className="flex flex-col gap-y-4">
+                <h1 className="title">Dashboard</h1>
+                <div className="flex items-center justify-center h-64">
+                    <div className="text-lg">Cargando datos...</div>
+                </div>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="flex flex-col gap-y-4">
+                <h1 className="title">Dashboard</h1>
+                <div className="flex items-center justify-center h-64">
+                    <div className="text-lg text-red-500">Error al cargar datos: {error}</div>
+                </div>
+            </div>
+        );
+    }
+
+    const { stats, overview, sales, products } = dashboardData;
 
     return (
         <div className="flex flex-col gap-y-4">
@@ -23,10 +47,12 @@ const DashboardPage = () => {
                         <p className="card-title">Bicicletas disponibles</p>
                     </div>
                     <div className="card-body bg-slate-100 transition-colors dark:bg-slate-950">
-                        <p className="text-3xl font-bold text-slate-900 transition-colors dark:text-slate-50">25,154</p>
+                        <p className="text-3xl font-bold text-slate-900 transition-colors dark:text-slate-50">
+                            {stats?.availableBikes?.value?.toLocaleString() || '0'}
+                        </p>
                         <span className="flex w-fit items-center gap-x-2 rounded-full border border-blue-500 px-2 py-1 font-medium text-blue-500 dark:border-blue-600 dark:text-blue-600">
                             <TrendingUp size={18} />
-                            25%
+                            {stats?.availableBikes?.percentage || 0}%
                         </span>
                     </div>
                 </div>
@@ -38,10 +64,12 @@ const DashboardPage = () => {
                         <p className="card-title">Pagos completados</p>
                     </div>
                     <div className="card-body bg-slate-100 transition-colors dark:bg-slate-950">
-                        <p className="text-3xl font-bold text-slate-900 transition-colors dark:text-slate-50">$16,000</p>
+                        <p className="text-3xl font-bold text-slate-900 transition-colors dark:text-slate-50">
+                            ${stats?.completedPayments?.value?.toLocaleString() || '0'}
+                        </p>
                         <span className="flex w-fit items-center gap-x-2 rounded-full border border-blue-500 px-2 py-1 font-medium text-blue-500 dark:border-blue-600 dark:text-blue-600">
                             <TrendingUp size={18} />
-                            12%
+                            {stats?.completedPayments?.percentage || 0}%
                         </span>
                     </div>
                 </div>
@@ -53,10 +81,12 @@ const DashboardPage = () => {
                         <p className="card-title">Clientes registrados</p>
                     </div>
                     <div className="card-body bg-slate-100 transition-colors dark:bg-slate-950">
-                        <p className="text-3xl font-bold text-slate-900 transition-colors dark:text-slate-50">15,400k</p>
+                        <p className="text-3xl font-bold text-slate-900 transition-colors dark:text-slate-50">
+                            {stats?.registeredCustomers?.value?.toLocaleString() || '0'}k
+                        </p>
                         <span className="flex w-fit items-center gap-x-2 rounded-full border border-blue-500 px-2 py-1 font-medium text-blue-500 dark:border-blue-600 dark:text-blue-600">
                             <TrendingUp size={18} />
-                            15%
+                            {stats?.registeredCustomers?.percentage || 0}%
                         </span>
                     </div>
                 </div>
@@ -68,10 +98,12 @@ const DashboardPage = () => {
                         <p className="card-title">Rentas</p>
                     </div>
                     <div className="card-body bg-slate-100 transition-colors dark:bg-slate-950">
-                        <p className="text-3xl font-bold text-slate-900 transition-colors dark:text-slate-50">12,340</p>
+                        <p className="text-3xl font-bold text-slate-900 transition-colors dark:text-slate-50">
+                            {stats?.rentals?.value?.toLocaleString() || '0'}
+                        </p>
                         <span className="flex w-fit items-center gap-x-2 rounded-full border border-blue-500 px-2 py-1 font-medium text-blue-500 dark:border-blue-600 dark:text-blue-600">
                             <TrendingUp size={18} />
-                            19%
+                            {stats?.rentals?.percentage || 0}%
                         </span>
                     </div>
                 </div>
@@ -87,7 +119,7 @@ const DashboardPage = () => {
                             height={300}
                         >
                             <AreaChart
-                                data={overviewData}
+                                data={overview || []}
                                 margin={{
                                     top: 0,
                                     right: 0,
@@ -150,7 +182,7 @@ const DashboardPage = () => {
                         <p className="card-title">Movimientos recientes</p>
                     </div>
                     <div className="card-body h-[300px] overflow-auto p-0">
-                        {recentSalesData.map((sale) => (
+                        {sales && sales.map((sale) => (
                             <div
                                 key={sale.id}
                                 className="flex items-center justify-between gap-x-4 py-2 pr-2"
@@ -190,7 +222,7 @@ const DashboardPage = () => {
                                 </tr>
                             </thead>
                             <tbody className="table-body">
-                                {topProducts.map((product) => (
+                                {products && products.map((product) => (
                                     <tr
                                         key={product.number}
                                         className="table-row"
